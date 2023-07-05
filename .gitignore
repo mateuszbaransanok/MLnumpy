@@ -1,0 +1,15 @@
+# Local storage
+/data/
+/experiments/
+
+# IDE
+/.idea/
+
+# Dev cache
+/.mypy_cache/
+/.tox/
+
+# Python cache
+__pycache__/
+*.pyi
+*.pyc
