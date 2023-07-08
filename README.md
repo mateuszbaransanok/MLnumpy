@@ -31,42 +31,42 @@ The MLnumpy framework consists of various components that represent different as
   It connects every neuron in the previous layer to every neuron in the current layer.
   The output of this layer is calculated as follows:
 
-  ![dense](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\bg_white&space;\Large&space;\text{output}=\text{activation}(\text{dot}(\text{input},&space;\text{weights})&space;+&space;\text{bias}))
+  $$\text{output} = \text{activation}(\text{dot}(\text{input},\text{weights})+\text{bias})$$
 
-  Here, `dot` represents the dot product between the input and weights, and `activation` is the activation function applied to the result.
+  Here, $\text{dot}$ represents the dot product between the input and weights, and $\text{activation}$ is the activation function applied to the result.
 
 * **Flatten** implements the flatten layer, which reshapes the input tensor into a 1-dimensional array.
   It is typically used to transition from convolutional layers to fully connected layers.
   The input tensor is flattened according to the following formula:
 
-  ![Flatten](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\bg_white&space;\Large&space;\text{output}=\text{input.reshape}(\text{batch\\_size},-1))
+  $$\text{output} = \text{input.reshape}(\text{batch\\_size},-1)$$
 
-  The `-1` parameter in `reshape` automatically calculates the size of the flattened dimension.
+  The $-1$ parameter in $\text{input.reshape}$ automatically calculates the size of the flattened dimension.
 
 * **Convolution2D** implements the 2D convolutional layer of a neural network.
   Convolutional layers are commonly used in image processing tasks.
   The output of this layer is obtained through a convolution operation between the input tensor and a set of learnable filters.
   The formula for computing the output feature map is as follows:
 
-  ![Convolution2D](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\bg_white&space;\Large&space;\text{output}=\text{activation}(\text{convolution}(\text{input},&space;\text{filters})&space;+&space;\text{bias}))
+  $$\text{output} = \text{activation}(\text{convolution}(\text{input},\text{filters})+\text{bias})$$
 
-  The `convolution` operation involves sliding the filters over the input tensor, performing element-wise multiplications and summing the results.
+  The $\text{convolution}$ operation involves sliding the filters over the input tensor, performing element-wise multiplications and summing the results.
 
 * **Pooling2D** implements the 2D pooling layer, which performs downsampling on the input tensor.
 
   - Max pooling is a commonly used pooling technique where the output of the pooling layer is obtained by selecting the maximum value within each pooling region.
     The formula for max pooling is as follows:
 
-    ![MaxPooling2D](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\bg_white&space;\Large&space;\text{output}=\text{max\\_pooling}(\text{input},&space;\text{pool\\_size}))
+    $$\text{output} = \text{max\\_pooling}(\text{input},\text{pool\\_size})$$
 
-    In the `max_pooling` operation, the input tensor is divided into non-overlapping regions, and the maximum value within each region is selected as the output.
+    In the $\text{max\\_pooling}$ operation, the input tensor is divided into non-overlapping regions, and the maximum value within each region is selected as the output.
 
   - Additionally, there is average pooling, which calculates the average value within each pooling region.
     The formula for average pooling is as follows:
 
-    ![AvgPooling2D](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\bg_white&space;\Large&space;\text{output}=\text{avg\\_pooling}(\text{input},&space;\text{pool\\_size}))
+    $$\text{output} = \text{avg\\_pooling}(\text{input},\text{pool\\_size})$$
 
-    In the `avg_pooling` operation, similar to max pooling, the input tensor is divided into non-overlapping regions,
+    In the $\text{avg\\_pooling}$ operation, similar to max pooling, the input tensor is divided into non-overlapping regions,
     but this time the average value within each region is selected as the output.
 
 
@@ -74,22 +74,22 @@ The MLnumpy framework consists of various components that represent different as
 
 Initializers are used to set the initial values of the weights and biases in neural network layers.
 
-* **Normal** generates random values from a normal distribution with mean `0` and standard deviation `1`.
+* **Normal** generates random values from a normal distribution with mean $0$ and standard deviation $1$.
   The formula for generating a random weight or bias value is as follows:
 
-  ![normal](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\bg_white&space;\Large&space;\text{value}=\text{random.normal}(0,1))
+  $$\text{value} = \text{random.normal}(0,1)$$
 
 * **Xavier** implements the Xavier initialization method, which is designed to keep the variances of the inputs and outputs of each layer approximately the same.
   The formula for generating a random weight or bias value using Xavier initialization is as follows:
 
-  ![xavier](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\bg_white&space;\Large&space;\text{value}=\text{random.normal}\left(0,\sqrt{\frac{2}{\text{fan\\_in}+\text{fan\\_out}}}\right))
+  $$\text{value} = \text{random.normal}\left(0,\sqrt{\frac{2}{\text{fan\\_in}+\text{fan\\_out}}}\right)$$
+  
+  Here, $\text{fan\\_in}$ is the number of input units in the weight tensor, and $\text{fan\\_out}$ is the number of output units.
 
-  Here, `fan_in` is the number of input units in the weight tensor, and `fan_out` is the number of output units.
-
-* **Zero** sets all weights and biases to `0`.
+* **Zero** sets all weights and biases to $0$.
   The formula for initializing weights and biases to zero is as follows:
 
-  ![zero](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\bg_white&space;\Large&space;\text{value}=0)
+  $$\text{value}=0$$
 
 
 ### Activations
@@ -99,31 +99,31 @@ Activation functions introduce non-linearity to the neural network, enabling it 
 * **Identity** function simply returns the input as the output without any transformation.
   The formula for the identity activation function is as follows:
 
-  ![identity](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{output}=\text{input})
+  $$\text{output} = \text{input}$$
 
-* **Rectified Linear Unit (ReLU)** function returns the maximum of `0` and the input value.
+* **Rectified Linear Unit (ReLU)** function returns the maximum of $0$ and the input value.
   It is commonly used in deep learning models to introduce non-linearity.
   The formula for the ReLU activation function is as follows:
 
-  ![relu](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{output}=\max(0,\text{input}))
+  $$\text{output} = \max(0,\text{input})$$
 
-* **Sigmoid** function maps the input to a value between `0` and `1` using the sigmoid function.
+* **Sigmoid** function maps the input to a value between $0$ and $1$ using the sigmoid function.
   It is often used in binary classification problems.
   The formula for the sigmoid activation function is as follows:
 
-  ![sigmoid](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{output}=\frac{1}{1+\exp(-\text{input})})
+  $$\text{output} = \frac{1}{1+\exp(-\text{input})}$$
 
 * **Softmax** function is used in multi-class classification problems to convert raw predictions into probabilities.
-  It exponentiates each input value and normalizes them to sum up to `1`.
+  It exponentiates each input value and normalizes them to sum up to $1$.
   The formula for the softmax activation function is as follows:
 
-  ![softmax](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{output}=\frac{\exp(\text{input})}{\sum_{i=1}^{n}\exp(\text{input}_i)})
+  $$\text{output} = \frac{\exp(\text{input})}{\sum_{i=1}^{n}\exp(\text{input}_i)}$$
 
-* **Hyperbolic tangent (Tanh)** function maps the input to a value between `-1` and `1` using the hyperbolic tangent function.
+* **Hyperbolic tangent (Tanh)** function maps the input to a value between $-1$ and $1$ using the hyperbolic tangent function.
   It is commonly used in deep learning models to introduce non-linearity.
   The formula for the tanh activation function is as follows:
 
-  ![tanh](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{output}=\frac{\exp(\text{input})-\exp(-\text{input})}{\exp(\text{input})+\exp(-\text{input})})
+  $$\text{output} = \frac{\exp(\text{input})-\exp(-\text{input})}{\exp(\text{input})+\exp(-\text{input})}$$
 
 
 ### Models
@@ -144,36 +144,31 @@ They help in training the network by providing an objective measure of how well 
   It calculates the average squared difference between the predicted and actual values.
   The formula for MSE loss is expressed as:
 
-  ![MSE](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{loss}=\frac{1}{N}\sum_{i=1}^{N}(y_i-\hat{y_i})^2)
+  $$\text{loss} = \frac{1}{N}\sum_{i=1}^{N}(y_i-\hat{y_i})^2$$
 
-  Here, ![N](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;N) represents the number of samples in the dataset,
-  ![y_i](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;y_i) denotes the actual value,
-  and ![`\hat{y_i}`](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\hat{y_i}) signifies the predicted value for
-  the ![`i`-th sample](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;i\text{-th%20sample}).
+  Here, $N$ represents the number of samples in the dataset, $y_i$ denotes the actual value,
+  and $\hat{y_i}$ signifies the predicted value for the $i$-th sample.
 
 * **Cross-Entropy (CE)** is employed in multi-class classification problems.
   It measures the dissimilarity between the predicted probability distribution and the actual distribution.
   The formula for CE loss is given by:
 
-  ![CE](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{loss}=-\sum_{i=1}^{C}y_i\log(\hat{y_i}))
+  $$\text{loss} = -\sum_{i=1}^{C} y_i\log(\hat{y_i})$$
 
-  In the equation above, ![C](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;C) represents the number of classes,
-  ![y_i](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;y_i) corresponds to the actual probability of the ![i](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;i)-th class,
-  and ![`\hat{y_i}`](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\hat{y_i}) signifies the predicted probability for
-  the ![i](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;i)-th class.
+  In the equation above, $C$ represents the number of classes, $y_i$ corresponds to the actual probability of the $i$-th class,
+  and $\hat{y_i}$ signifies the predicted probability for the $i$-th class.
 
 * **Softmax Cross-Entropy (SCE)** is another variant of the cross-entropy loss function often used in multi-class classification tasks.
   It combines the softmax activation function and cross-entropy loss to provide a more robust and numerical stable loss measure.
   The formula for softmax cross-entropy loss can be written as:
 
-  ![SoftmaxCE](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{loss}=-\sum_{i=1}^{C}y_i\log\left(\frac{e^{\hat{y_i}}}{\sum_{j=1}^{C}e^{\hat{y_j}}}\right))
+  $$\text{loss} = -\sum_{i=1}^{C} y_i\log\left(\frac{e^{\hat{y_i}}}{\sum_{j=1}^{C}e^{\hat{y_j}}}\right)$$
 
-  Here, ![C](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;C) denotes the number of classes,
-  ![y_i](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;y_i) represents the actual probability of
-  the ![i](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;i)-th class,
-  and ![`\hat{y_i}`](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\hat{y_i}) signifies the predicted score for
-  the ![i](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;i)-th class before applying the softmax activation function.
-  The softmax function ensures that the predicted scores form a valid probability distribution by exponentiating them and normalizing the sum of all scores.
+  Here, $C$ denotes the number of classes, $y_i$ represents the actual probability of
+  the $i$-th class, and $\hat{y_i}$ signifies the predicted score for
+  the $i$-th class before applying the softmax activation function.
+  The softmax function ensures that the predicted scores form a valid probability distribution by 
+  exponentiating them and normalizing the sum of all scores.
 
 These loss functions are essential tools in training neural networks and optimizing their performance.
 By minimizing the chosen loss function, the network learns to make more accurate predictions and generalize better to unseen data.
@@ -181,101 +176,89 @@ By minimizing the chosen loss function, the network learns to make more accurate
 
 ### Optimizers
 
-* **Stochastic Gradient Descent (SGD)** optimizer updates the weights in the opposite direction proportional to the gradient of the loss multiplied by
-  the learning rate ![\eta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\eta) (a constant hyperparameter, default equals `0.1`).
+* **Stochastic Gradient Descent (SGD)** optimizer updates the weights in the opposite direction proportional to
+  the gradient of the loss multiplied by the learning rate $\eta=0.1$.
 
-  ![SGD](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\theta=\theta-\eta\nabla_\theta{J(\theta)}),
+  $$\theta = \theta - \eta \nabla_\theta J(\theta)$$
 
-  where ![theta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\theta) represents the learnable weights,
-  ![eta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\eta) is the learning rate,
-  and ![nabla_theta_J](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\nabla_\theta{J(\theta)}) is the gradient of the loss function.
+  where $\theta$ represents the learnable weights, $\eta$ is the learning rate,
+  and $\nabla_\theta J(\theta)$ is the gradient of the loss function.
 
 * **SGD with Momentum** takes into account the weight change from the previous step by introducing an additional variable called velocity and
   a constant hyperparameter called the momentum coefficient. It helps overcome flat regions (plateaus) in the function landscape to find the optimal minimum.
-  The hyperparameters are set as follows: ![gamma](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\gamma=0.9), ![eta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\eta=0.01).
+  The hyperparameters are set as follows: $\gamma=0.9$, $\eta=0.01$.
 
-  ![SGD momentum](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;v_t=\gamma{v_{t-1}}+\eta\nabla_\theta{J(\theta)}),
+  $$v_t = \gamma v_{t-1} + \eta \nabla_\theta J(\theta)$$
 
-  ![SGD momentum](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\theta=\theta-v_t),
+  $$\theta = \theta - v_t$$
 
-  where ![v_t](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;v_t) is the velocity in the current step,
-  ![v_{t-1}](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;v_{t-1}) is the velocity from the previous step,
-  ![eta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\eta) is the learning rate,
-  and ![nabla_theta_J](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\nabla_\theta{J(\theta)}) is the gradient of the loss function.
+  where $v_t$ is the velocity in the current step, $v_{t-1}$ is the velocity from the previous step,
+  $eta$ is the learning rate, and $\nabla_\theta J(\theta)$ is the gradient of the loss function.
 
 * **Nesterov Accelerated Gradient (NAG)** applies Nesterov's momentum, which provides stronger convergence for convex functions
   and performs slightly better than plain momentum in practice.
   It assumes "looking ahead" by calculating the gradient of the loss with respect to the future position of the parameter vector (rather than its current position),
   which prevents excessive acceleration and the risk of overshooting the minimum.
-  The hyperparameters ![gamma](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\gamma) and ![eta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\eta) are set to the same values as plain momentum.
+  The hyperparameters $\gamma$ and $\eta$ are set to the same values as plain momentum.
 
-  ![NAG](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;v_t=\gamma{v_{t-1}}+\eta\nabla_\theta{J(\theta-\gamma{v_{t-1}})}),
-
-  ![NAG](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\theta=\theta-v_t),
+  $$v_t = \gamma v_{t-1} + \eta \nabla_\theta J(\theta - \gamma v_{t-1})$$
+  
+  $$\theta = \theta - v_t$$
 
   In practice, Nesterov's momentum is often calculated using the transformed above formulas:
 
-  ![NAG](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;v_t=\gamma{v_{t-1}}+\eta\nabla_\theta{J(\theta)}),
+  $$v_t = \gamma v_{t-1} + \eta \nabla_\theta J(\theta)$$
 
-  ![NAG](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\theta=\theta-\gamma{v_{t-1}}+(1+\gamma)v_t),
+  $$\theta = \theta - \gamma v_{t-1} + (1 + \gamma) v_t$$
 
-  where ![eta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\eta) is the learning rate (default value of `0.001`),
-  ![g_t](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;g_t) is the gradient in the current step,
-  ![G_t](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;G_t) is the sum of squared gradients up to the current step,
-  and ![eta_w](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\eta_w) is the variable learning rate.
+  where $\eta$ is the learning rate, with a default value of $0.001$,
+  $g_t$ is the gradient in the current step,
+  $G_t$ is the sum of squared gradients up to the current step,
+  and $\eta_w$ is the variable learning rate.
 
 * **Adagrad** adapts the learning rate depending on the history of weight changes.
   If weight changes have been infrequent, the learning rate will be larger, and for frequent changes, it will be smaller.
 
-  ![Adagrad](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\theta_{t+1}=\theta_t-\frac{\eta_w}{\sqrt{G_t+\epsilon}}g_t),
+  $$\theta_{t+1} = \theta_t - \frac{\eta_w}{\sqrt{G_t+\epsilon}}g_t$$
 
-  ![Adagrad](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\eta_w=\frac{\eta}{\sqrt{G_t+\epsilon}}g_t),
+  $$\eta_w = \frac{\eta}{\sqrt{G_t+\epsilon}}g_t$$
 
-  ![Adagrad](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;G_t=\sum{(g_t)^2}),
+  $$G_t = \sum{(g_t)^2}$$
 
-  In this case, ![eta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\eta) represents the learning rate, with a default value of 0.001.
-  ![g_t](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;g_t) is the gradient in the current step,
-  ![G_t](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;G_t) is the sum of squared gradients up to the current step,
-  and ![eta_w](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\eta_w) is the variable learning rate.
+  In this case, $\eta$ represents the learning rate, with a default value of $0.001$.
+  $g_t$ is the gradient in the current step, $G_t$ is the sum of squared gradients up to the current step,
+  and $\eta_w$ is the variable learning rate.
 
 * **Adadelta** is an extension of Adagrad that prevents a large decrease in the learning rate.
   Instead of accumulating the history of all past gradients, it sums their moving average within a sliding window of past training iterations.
   In the original version, it does not require specifying a learning rate.
-  The constants used in the formulas are as follows: ![gamma](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\gamma=0.95)
-  and ![epsilon](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\epsilon=10^{-6}).
+  The constants used in the formulas are as follows: $\gamma=0.95$ and $\epsilon=10^{-6}$.
 
-  ![Adadelta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\Delta{\theta_t}=-\frac{RMS[\delta{\theta}]_{t-1}}{RMS[g]_t}g_t),
+  $$\Delta{\theta_t} = -\frac{RMS[\delta{\theta}]_{t-1}}{RMS[g]_t}g_t$$
 
-  ![Adadelta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;RMS[g]_t=\gamma{E[g]^2_{t-1}}+(1-\gamma)g^2_t),
+  $$RMS[g]\_t = \gamma E[g]_{t-1}^{2} +(1-\gamma)g^2_t$$
 
-  ![Adadelta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;RMS[\Delta{\theta}]_t=\sqrt{E[\Delta{\theta^2}]_t+\epsilon}),
+  $$RMS[\delta{\theta}]_t = \sqrt{E[\Delta{\theta^2}]_t+\epsilon}$$
 
-  where ![RMS_g_t](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;RMS[g]_t) (root mean square) is the gradient accumulator,
-  ![g_t](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;g_t) is the gradient in the current step,
-  ![Delta_theta_t](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\Delta{\theta_t}) is the weight update value,
-  and ![RMS_Delta_theta_t](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;RMS[\Delta{\theta}]_t) is the accumulator of weight changes.
+  where $RMS[g]_t$ (root mean square) is the gradient accumulator, $g_t$ is the gradient in the current step,
+  $\Delta{\theta_t}$ is the weight update value, and $RMS[\Delta{\theta}]_t$ is the accumulator of weight changes.
 
 * **Adam** (Adaptive Moment Estimator) is one of the commonly used optimization methods in neural network training.
-  The constants used in the formulas are as follows: ![eta](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\eta=0.001),
-  ![beta_1](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\beta_1=0.9),
-  ![beta_2](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\beta_2=0.999),
-  ![epsilon](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\epsilon=10^{-8}).
+  The constants used in the formulas are as follows: $\eta=0.001$, $\beta_1=0.9$, $\beta_2=0.999$, $\epsilon=10^{-8}$.
 
-  ![Adam](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;m_t=\beta_1m_{t-1}+(1-\beta_1)g_t),
+  $$m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t$$
 
-  ![Adam](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;v_t=\beta_2v_{t-1}+(1-\beta_2)g^2_t),
+  $$v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2$$
 
-  ![Adam](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\hat{m}_t=\frac{m_t}{1-\beta^t_1}),
+  $$\hat{m}_t = \frac{m_t}{1-\beta_1^t}$$
+  
+  $$\hat{v}_t = \frac{v_t}{1-\beta_2^t}$$
 
-  ![Adam](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\hat{v}_t=\frac{v_t}{1-\beta^t_2}),
+  $$\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon}\hat{m}_t$$
 
-  ![Adam](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\theta_{t+1}=\theta_t-\frac{\eta}{\sqrt{\hat{v}_t}+\epsilon}\hat{m}_t),
-
-  where ![mt](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;m_t) and ![vt](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;v_t)
-  are the first and second moments of the gradients, ![hat_mt](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\hat{m}_t)
-  and ![hat_vt](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\hat{v}_t) are bias-corrected versions,
-  ![gt](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;g_t) is the gradient in the current step,
-  and ![theta_t](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\theta_t) is the weight in the current step.
+  where $m_t$ and $v_t$ are the first and second moments of the gradients, $\hat{m}_t$
+  and $\hat{v}_t$ are bias-corrected versions, $g_t$ is the gradient in the current step,
+  and $\theta_t$ is the weight in the current step.
 
 
 ### Metrics
@@ -284,19 +267,19 @@ The metrics module provides implementations of evaluation metrics for classifica
 
 * **Accuracy** measures the proportion of correctly classified instances to the total number of instances. It is calculated as:
 
-  ![Accuracy](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{accuracy}=\frac{\text{true\\_positives}+\text{true\\_negatives}}{\text{total\\_instances}})
+  $$\text{accuracy} = \frac{\text{true\\_positives} + \text{true\\_negatives}}{\text{total\\_instances}}$$
 
 * **Precision** measures the proportion of true positive predictions to the total number of positive predictions. It is calculated as:
 
-  ![Precision](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{precision}=\frac{\text{true\\_positives}}{\text{true\\_positives}+\text{false\\_positives}})
+  $$\text{precision} = \frac{\text{true\\_positives}}{\text{true\\_positives} + \text{false\\_positives}}$$
 
 * **Recall** measures the proportion of true positive predictions to the total number of actual positive instances. It is calculated as:
 
-  ![Recall](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{recall}=\frac{\text{true\\_positives}}{\text{true\\_positives}+\text{false\\_negatives}})
+  $$\text{recall} = \frac{\text{true\\_positives}}{\text{true\\_positives} + \text{false\\_negatives}}$$
 
 * **F1 score** is the harmonic mean of precision and recall. It provides a balanced measure between precision and recall. It is calculated as:
 
-  ![F1 Score](https://latex.codecogs.com/png.image?\inline&space;\dpi{100}\bg{white}\Large&space;\text{F1\\_score}=2\cdot\frac{\text{precision}\cdot\text{recall}}{\text{precision}+\text{recall}})
+  $$\text{F1\\_score} = 2 \cdot \frac{\text{precision} \cdot \text{recall}}{\text{precision} + \text{recall}}$$
 
 These metrics are commonly used to evaluate the performance of classification models.
 They provide insights into different aspects of the model's predictions, such as overall accuracy, precision in identifying positive instances,
