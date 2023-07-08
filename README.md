@@ -10,14 +10,13 @@ Whether you're a beginner looking to grasp the basics of neural networks or an e
 MLnumpy provides a clear and concise implementation that can serve as a stepping stone for further exploration in the field of machine learning.
 
 
-# Installation
+## Installation
+
 To install the project, follow these steps:
 
 1. Clone the repository.
 2. Create a Python 3.10+ environment.
 3. Install the required packages by running the following command: `pip install -r requirements.txt`.
-
-This will clone the repository, set up the Python environment, and install all the necessary dependencies.
 
 
 ## Documentation
@@ -328,14 +327,15 @@ It includes a variety of functions that can assist in common tasks such as data 
 These functions are designed to simplify the development process and enhance the overall usability of MLnumpy.
 
 
-# Examples
+## Examples
 
 In the MLnumpy framework, several example scripts are provided to demonstrate the usage and capabilities of the library.
 These examples cover various aspects of neural networks and serve as a starting point for building and experimenting with your own models.
 Here are two key examples:
 
 
-## Training a Convolutional Neural Network (CNN)
+### Training a Convolutional Neural Network (CNN)
+
 To train the first model in the MLnumpy framework, you can run the following command in your terminal:
 
 ```bash
@@ -347,7 +347,8 @@ The necessary data will be automatically downloaded to the `data` folder, and th
 By running this example, you can observe the training process and monitor the model's performance.
 
 
-## Evaluating the Best Model Checkpoint
+### Evaluating the Best Model Checkpoint
+
 To evaluate the best model checkpoint obtained during the training process, you can use the following command:
 
 ```bash
@@ -363,14 +364,17 @@ You can experiment with different configurations, architectures, and hyperparame
 MLnumpy provides a flexible and customizable framework that encourages you to create and test your own scripts, enabling you to dive deeper into the world of neural networks and machine learning.
 
 
-# Contribution
+## Contribution
+
 Contributions are very welcome.
 Tests can be run with [tox](https://tox.wiki/en/latest/), please ensure the coverage at least stays the same before you submit a merge request.
 
 
-# License
+## License
+
 Distributed under the terms of the [MIT](https://opensource.org/license/mit/) license, MLnumpy is free and open source software.
 
 
-# Issues
+## Issues
+
 If you encounter any problems, please email me at <mateusz.baran.sanok@gmail.com>, along with a detailed description.
