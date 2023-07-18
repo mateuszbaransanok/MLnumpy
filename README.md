@@ -360,4 +360,4 @@ Distributed under the terms of the [MIT](https://opensource.org/license/mit/) li
 
 ## Issues
 
-If you encounter any problems, please email me at <mateusz.baran.sanok@gmail.com>, along with a detailed description.
+If you encounter any problems, please leave [issue](../../issues/new), along with a detailed description.
